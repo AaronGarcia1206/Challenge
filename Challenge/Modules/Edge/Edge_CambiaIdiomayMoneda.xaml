@@ -94,15 +94,11 @@
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Edge_CambiaIdiomayMoneda" sap:VirtualizedContainerService.HintSize="569.6,3465.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Edge_CambiaIdiomayMoneda" sap:VirtualizedContainerService.HintSize="892.0000000000001,3096" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Lenguaje" />
       <Variable x:TypeArguments="x:String" Default="English - EN" Name="IdiomaCorrecto" />
-      <Variable x:TypeArguments="x:String" Name="MonendaCorrecta">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">MX$ - MXN - Mexican Peso</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="MX$ - MXN - Mexican Peso" Name="MonendaCorrecta" />
       <Variable x:TypeArguments="x:String" Name="Monedatxt" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -110,20 +106,20 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Start Edge_CambioIdiomayMoneda" sap:VirtualizedContainerService.HintSize="507.2,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Inicia Edge_CambiaIdiomayMoneda&quot;]" />
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Ancla a navegador edge pag Amazon" sap:VirtualizedContainerService.HintSize="507.2,2988.8" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="6c6edec872c98f451d41e864247b30a0" Selector="&lt;html app='msedge.exe' title='*' url='https://www.amazon.com/*' /&gt;">
+    <ui:LogMessage DisplayName="Start Edge_CambioIdiomayMoneda" sap:VirtualizedContainerService.HintSize="484.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Inicia Edge_CambiaIdiomayMoneda&quot;]" />
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Ancla a navegador edge pag Amazon" sap:VirtualizedContainerService.HintSize="484.8,2732.8" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="6c6edec872c98f451d41e864247b30a0" Selector="&lt;html app='msedge.exe' title='*' url='https://www.amazon.com/*' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="473.6,2841.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="451.2,2553.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Obtiene idiomade la pagina" sap:VirtualizedContainerService.HintSize="411.2,107.2" sap2010:WorkflowViewState.IdRef="GetValue_1">
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Obtiene idiomade la pagina" sap:VirtualizedContainerService.HintSize="417.6,139.2" sap2010:WorkflowViewState.IdRef="GetValue_1">
               <ui:GetValue.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="043959a2-23eb-45a5-bedc-a8c88b8388ad" InformativeScreenshot="a784b63f79a4a24ed36f6cf092898c00" Selector="&lt;webctrl parentid='icp-nav-flyout' tag='DIV' aaname='*' innertext='*' visibleinnertext='*' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
@@ -135,7 +131,7 @@
                 <OutArgument x:TypeArguments="x:String">[Lenguaje]</OutArgument>
               </ui:GetValue.Value>
             </ui:GetValue>
-            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Idioma" sap:VirtualizedContainerService.HintSize="411.2,107.2" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Idioma" sap:VirtualizedContainerService.HintSize="417.6,139.2" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -154,7 +150,7 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <If Condition="[Not Lenguaje.Equals(&quot;EN&quot;)]" DisplayName="Valida idioma correcto" sap:VirtualizedContainerService.HintSize="411.2,976.8" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[Not Lenguaje.Equals(&quot;EN&quot;)]" DisplayName="Valida idioma correcto" sap:VirtualizedContainerService.HintSize="417.6,903.2" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -162,14 +158,14 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="377.6,561.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,539.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Mensaje de idioma incorrecto" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Idioma Incorrecto cambiando idioma a &quot;  + IdiomaCorrecto]" />
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Idioma" sap:VirtualizedContainerService.HintSize="334.4,107.2" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                  <ui:LogMessage DisplayName="Mensaje de idioma incorrecto" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Idioma Incorrecto cambiando idioma a &quot;  + IdiomaCorrecto]" />
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Idioma" sap:VirtualizedContainerService.HintSize="382.4,139.2" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -188,21 +184,21 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:LogMessage DisplayName="Mensaje cambio de idioma" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;El idioma se cmabio de &quot; +Lenguaje + &quot; a &quot;+IdiomaCorrecto+Environment.NewLine + &quot;Validando Mondeda local...&quot;]" />
+                  <ui:LogMessage DisplayName="Mensaje cambio de idioma" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;El idioma se cmabio de &quot; +Lenguaje + &quot; a &quot;+IdiomaCorrecto+Environment.NewLine + &quot;Validando Mondeda local...&quot;]" />
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="377.6,232" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Mensaje de idioma correcto" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Idioma Ccorrecto&quot;]" />
+                  <ui:LogMessage DisplayName="Mensaje de idioma correcto" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Idioma Ccorrecto&quot;]" />
                 </Sequence>
               </If.Else>
             </If>
-            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Obtiene moneda" sap:VirtualizedContainerService.HintSize="411.2,107.2" sap2010:WorkflowViewState.IdRef="GetValue_3">
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Obtiene moneda" sap:VirtualizedContainerService.HintSize="417.6,139.2" sap2010:WorkflowViewState.IdRef="GetValue_3">
               <ui:GetValue.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0312c6bc-a0e1-4f49-8cfc-dc611e303a65" InformativeScreenshot="e585904705a64d094b93a2030dde7468" Selector="&lt;webctrl parentid='icp-currency-dropdown-selected-item-prompt' tag='SPAN' idx='*' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
@@ -220,7 +216,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:GetValue>
-            <If Condition="[Not Monedatxt.Equals(MonendaCorrecta)]" DisplayName="Valida moneda correcta" sap:VirtualizedContainerService.HintSize="411.2,1124" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[Not Monedatxt.Equals(MonendaCorrecta)]" DisplayName="Valida moneda correcta" sap:VirtualizedContainerService.HintSize="417.6,1042.4" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -228,14 +224,14 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="377.6,708.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,678.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Mensaje de moneda incorrecta" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Moneda  Incorrecta, cambiando moneda  a &quot;  + MonendaCorrecta]" />
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click monedas" sap:VirtualizedContainerService.HintSize="334.4,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
+                  <ui:LogMessage DisplayName="Mensaje de moneda incorrecta" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Moneda  Incorrecta, cambiando moneda  a &quot;  + MonendaCorrecta]" />
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click monedas" sap:VirtualizedContainerService.HintSize="382.4,139.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -254,7 +250,7 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click moneda correcta'" sap:VirtualizedContainerService.HintSize="334.4,107.2" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click moneda correcta'" sap:VirtualizedContainerService.HintSize="382.4,139.2" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -273,21 +269,21 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:LogMessage DisplayName="Mensaje cambio de idioma" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Se hizo el cambio de moneda de &quot; +Monedatxt + &quot; a &quot;+MonendaCorrecta]" />
+                  <ui:LogMessage DisplayName="Mensaje cambio de idioma" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Se hizo el cambio de moneda de &quot; +Monedatxt + &quot; a &quot;+MonendaCorrecta]" />
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="377.6,232" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Mensaje de moneda correcta" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Moneda correcta&quot;]" />
+                  <ui:LogMessage DisplayName="Mensaje de moneda correcta" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Moneda correcta&quot;]" />
                 </Sequence>
               </If.Else>
             </If>
-            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click guardar cambios" sap:VirtualizedContainerService.HintSize="411.2,107.2" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click guardar cambios" sap:VirtualizedContainerService.HintSize="417.6,130.4" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -310,6 +306,6 @@
         </ActivityAction>
       </ui:BrowserScope.Body>
     </ui:BrowserScope>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="507.2,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Termina Edge_CambiaIdiomayMoneda&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484.8,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Termina Edge_CambiaIdiomayMoneda&quot;]" />
   </Sequence>
 </Activity>

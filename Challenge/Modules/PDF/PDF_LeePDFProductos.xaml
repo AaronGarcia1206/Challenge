@@ -1,7 +1,7 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="PDF_LeePDFProductos" this:PDF_LeePDFProductos.in_Path="C:\Users\Desktop - 6003 0431\Documents\Challenge\Challenge RPA - NI - Productos.pdf" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="PDF_LeePDFProductos" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_Path" Type="InArgument(x:String)" />
     <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -42,6 +42,9 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>System.Activities.Runtime.Collections</x:String>
       <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.Testing.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -97,37 +100,42 @@
       <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="PDF_LeePDFProductos" sap:VirtualizedContainerService.HintSize="892.0000000000001,1924.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="PDF_LeePDFProductos" sap:VirtualizedContainerService.HintSize="892.0000000000001,1785.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Text" />
-      <Variable x:TypeArguments="s:String[]" Name="LinesArray" />
-      <Variable x:TypeArguments="x:Int32" Name="Index" />
+      <Variable x:TypeArguments="x:String" Name="RutaPDF" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Inicia PDF_LeePDFProductos" sap:VirtualizedContainerService.HintSize="468.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Inicia PDF_LeePDFProductos&quot;]" />
-    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Lee pdf producttos" FileName="[in_Path]" sap:VirtualizedContainerService.HintSize="468.8,92" sap2010:WorkflowViewState.IdRef="ReadPDFText_3" Range="All" Text="[Text]" />
-    <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="Data\Input\Prueba.txt" sap:VirtualizedContainerService.HintSize="468.8,166.4" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[Text]" />
-    <Assign DisplayName="Convierte texto a arreglo" sap:VirtualizedContainerService.HintSize="468.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Inicia PDF_LeePDFProductos" sap:VirtualizedContainerService.HintSize="513.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Inicia PDF_LeePDFProductos&quot;]" />
+    <Assign DisplayName="Ruta de insumo pdf" sap:VirtualizedContainerService.HintSize="513.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_9">
       <Assign.To>
-        <OutArgument x:TypeArguments="s:String[]">[LinesArray]</OutArgument>
+        <OutArgument x:TypeArguments="x:String">[RutaPDF]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="s:String[]">[Text.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)]</InArgument>
+        <InArgument x:TypeArguments="x:String">[in_Config("RutaInsumoPDF").ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[Index]" DisplayName="Para cada producto" sap:VirtualizedContainerService.HintSize="468.8,1189.6" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[LinesArray]">
+    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Lee pdf producttos" FileName="[RutaPDF]" sap:VirtualizedContainerService.HintSize="513.6,92" sap2010:WorkflowViewState.IdRef="ReadPDFText_3" Range="All" Text="[Text]" />
+    <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="Data\Input\Prueba.txt" sap:VirtualizedContainerService.HintSize="513.6,166.4" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[Text]" />
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Para cada producto" sap:VirtualizedContainerService.HintSize="513.6,1050.4" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Split(Text,&quot;,&quot;)]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="item" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Proces for item" sap:VirtualizedContainerService.HintSize="467.2,1008" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Proces for item" sap:VirtualizedContainerService.HintSize="512,868.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="Producto" />
               <Variable x:TypeArguments="x:String" Name="ZonaEnvio" />
@@ -137,73 +145,56 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[item.Contains(&quot;{&quot;) or item.Contains(&quot;}&quot;)]" DisplayName="Valida datos " sap:VirtualizedContainerService.HintSize="433.6,271.2" sap2010:WorkflowViewState.IdRef="If_3">
-              <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:Continue sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="Continue_1" />
-                </Sequence>
-              </If.Then>
-              <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,24.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </Sequence>
-              </If.Else>
-            </If>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,56.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[item]">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:LogMessage>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_2">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[Producto]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[Split(Split(item, "|")(0), ":")(1)]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_4">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[Producto]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(Producto, "[^a-zA-Z\s]", "")]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_3">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[ZonaEnvio]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[Split(Split(item,"Zona de envio")(1),":")(1)]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_5">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[ZonaEnvio]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(ZonaEnvio, "[^a-zA-Z\s]", "")]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <ui:LogMessage DisplayName="Datos de PDF" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Producto: &quot;+Producto + Environment.NewLine+&quot;Zona Envio: &quot;+ZonaEnvio]" />
+            <ui:MultipleAssign DisplayName="Obtiene datos de productos" sap:VirtualizedContainerService.HintSize="478.4,242.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[item]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[item.Replace(Environment.NewLine,"")]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[item]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(item, "[^a-zA-Z\s\+]", "")]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[Producto]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Split(Split (item,"Nombre producto")(1),"Zona")(0)]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[ZonaEnvio]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[split (item,"envio")(1)]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
+            </ui:MultipleAssign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Folder path: &quot;+in_Config(&quot;OrchestratorQueueFolder&quot;).ToString+ Environment.NewLine+ &quot;Cola: &quot;+in_Config(&quot;OrchestratorQueueName&quot;).ToString]" />
+            <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="Felipe's Folder" sap:VirtualizedContainerService.HintSize="478.4,226.4" sap2010:WorkflowViewState.IdRef="AddQueueItem_4" ItemInformationCollection="[new System.Collections.Generic.Dictionary(Of System.String, System.Object) From {  }]" Priority="Normal" QueueType="Productos" Reference="Productos">
+              <ui:AddQueueItem.ItemInformation>
+                <InArgument x:TypeArguments="x:String" x:Key="&quot;Producto&quot;">[Producto]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="&quot;Zona Envio&quot;">[ZonaEnvio]</InArgument>
+              </ui:AddQueueItem.ItemInformation>
+            </ui:AddQueueItem>
+            <ui:LogMessage DisplayName="Datos de PDF" sap:VirtualizedContainerService.HintSize="478.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Producto: &quot;+Producto + Environment.NewLine+&quot;Zona Envio: &quot;+ZonaEnvio]" />
           </Sequence>
         </ActivityAction>
       </ui:ForEach.Body>
     </ui:ForEach>
-    <ui:LogMessage DisplayName="Termina PDF_LeePDFProductos" sap:VirtualizedContainerService.HintSize="468.8,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Termina PDF_LeePDFProductos&quot;]" />
+    <ui:LogMessage DisplayName="Termina PDF_LeePDFProductos" sap:VirtualizedContainerService.HintSize="513.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Termina PDF_LeePDFProductos&quot;]" />
   </Sequence>
 </Activity>
