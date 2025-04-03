@@ -1,1 +1,11 @@
- Price 
+New column 0
+5 star
+86%
+4 star
+8%
+3 star
+3%
+2 star
+1%
+1 star
+2%
