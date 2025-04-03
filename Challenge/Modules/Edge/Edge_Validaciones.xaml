@@ -118,7 +118,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Inicia Edge_Validaciones" sap:VirtualizedContainerService.HintSize="417.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Inicia Edge_Validaciones&quot;]" />
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="PruebaCredential" CacheStrategy="None" DisplayName="Get Credential" FolderPath="Felipe's Folder" sap:VirtualizedContainerService.HintSize="417.6,175.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[PasswordCred]" Username="[UsernNameCred]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="ACMECredentials" CacheStrategy="None" DisplayName="Credenciales Correo" FolderPath="Felipe's Folder" sap:VirtualizedContainerService.HintSize="417.6,175.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[PasswordCred]" Username="[UsernNameCred]" />
     <ui:UiElementExists DisplayName="Existe capcha" Exists="[ExisteCapcha]" sap:VirtualizedContainerService.HintSize="417.6,139.2" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
       <ui:UiElementExists.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="30e69b27-816a-49e7-be63-aed27e3afec0" InformativeScreenshot="222065bf97b4d977b40502a79e913a69" Selector="&lt;html app='msedge.exe' title='*' url='https://www.amazon.com/' /&gt;&lt;webctrl id='captchacharacters' tag='INPUT' /&gt;" WaitForReady="COMPLETE">
